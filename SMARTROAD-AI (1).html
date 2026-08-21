@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMARTROAD AI | Smart City Mobility</title>
+<style>
+:root{--bg:#06111f;--panel:#0b1b2d;--panel2:#0d253a;--line:#1e4561;--cyan:#28d7ff;--blue:#247cff;--red:#ff4b5c;--amber:#ffbf3f;--green:#34d399;--text:#edf8ff;--muted:#91a8b8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0%,#103e5e 0,transparent 28%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.app{min-height:100vh}.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:15px 4%;background:#06111fee;border-bottom:1px solid #1c415a;backdrop-filter:blur(16px)}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px;color:var(--cyan)}.brand span{color:#fff}.links{display:flex;gap:6px;flex-wrap:wrap}.links button{background:transparent;color:#c6d8e5;border:0;padding:9px 12px;border-radius:9px}.links button:hover,.links button.active{background:#12344b;color:var(--cyan)}.status{margin-left:auto;color:var(--green);font-size:12px}
+main{max-width:1400px;margin:auto;padding:28px 4% 60px}.page{display:none}.page.active{display:block;animation:fade .3s}@keyframes fade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{min-height:72vh;display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:center}.eyebrow{color:var(--cyan);letter-spacing:.25em;font-size:12px;font-weight:800}.hero h1{font-size:clamp(48px,8vw,92px);line-height:.9;margin:16px 0}.hero h1 em{color:var(--cyan);font-style:normal}.lead{font-size:20px;color:#b6c8d5;max-width:720px;line-height:1.6}.glass,.card{background:linear-gradient(135deg,#0d2439e8,#081522e8);border:1px solid #1c4763;border-radius:20px;box-shadow:0 25px 70px #0005;backdrop-filter:blur(12px)}.card{padding:20px}.grid{display:grid;gap:16px}.feature-grid{grid-template-columns:repeat(3,1fr);margin-top:28px}.feature{padding:18px}.feature strong{display:block;margin-top:8px}.icon{font-size:25px}.login{padding:28px}.login h2{margin-top:0}.input{width:100%;padding:12px 14px;background:#06131f;color:white;border:1px solid #28506a;border-radius:11px;margin:7px 0 14px}.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:800}.primary{background:var(--cyan);color:#021019}.danger{background:var(--red);color:white}.secondary{background:#123a55;color:#e7f8ff}.success{background:var(--green);color:#021c16}.stats{grid-template-columns:repeat(5,1fr);margin-bottom:18px}.stat .label{color:var(--muted);font-size:13px}.stat .value{font-size:34px;font-weight:900;margin-top:7px;color:var(--cyan)}.two{grid-template-columns:1.5fr 1fr}.three{grid-template-columns:repeat(3,1fr)}.map{position:relative;height:520px;border-radius:18px;overflow:hidden;background:linear-gradient(45deg,#0b2635,#113b4c);border:1px solid #28546b}.roads{position:absolute;inset:0;background:repeating-linear-gradient(33deg,transparent 0 72px,#276477 74px 78px,transparent 80px 140px),repeating-linear-gradient(128deg,transparent 0 100px,#1d5369 102px 106px,transparent 108px 170px);opacity:.75}.route{position:absolute;left:15%;top:56%;width:68%;height:14%;border-top:7px solid var(--red);border-radius:50%;transform:rotate(-14deg);filter:drop-shadow(0 0 9px #f33)}.route.safe{border-color:var(--green);top:44%;transform:rotate(12deg)}.route.fast{border-color:var(--cyan);top:62%;transform:rotate(-5deg)}.marker{position:absolute;width:18px;height:18px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px #fff2}.marker.pothole{background:var(--amber)}.marker.flood{background:var(--blue)}.marker.event{background:#a855f7}.marker.emergency{background:var(--red);animation:pulse 1s infinite}@keyframes pulse{50%{box-shadow:0 0 0 14px #f4433666}}.legend{position:absolute;bottom:15px;left:15px;background:#07131fd9;padding:10px;border-radius:10px;font-size:12px}.legend span{margin-right:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}.list{display:grid;gap:10px}.item{padding:13px;border:1px solid #1c4158;border-radius:12px;background:#081725}.item small{color:var(--muted)}.chart{height:260px;display:flex;align-items:end;gap:12px;padding:25px 12px;border-bottom:1px solid #315066;background:linear-gradient(180deg,#0c2032,#081421);border-radius:14px}.bar{flex:1;background:linear-gradient(180deg,var(--cyan),#1464a7);border-radius:7px 7px 0 0;min-height:12px;position:relative}.bar b{position:absolute;bottom:-23px;width:100%;text-align:center;font-size:11px;color:var(--muted)}.risk{height:10px;border-radius:8px;background:#183249;overflow:hidden}.risk i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--amber),var(--red))}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10364c;color:var(--cyan);font-size:12px}.control{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.table{width:100%;border-collapse:collapse}.table td,.table th{padding:12px;border-bottom:1px solid #1b4057;text-align:left}.table th{color:var(--muted);font-size:12px}.modal{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:100}.modal.open{display:grid}.modal .box{width:min(500px,92vw);padding:25px}.toast{position:fixed;right:22px;bottom:22px;background:#0e2c3c;border:1px solid #24617a;padding:14px 18px;border-radius:12px;display:none;z-index:120}.toast.show{display:block}
+@media(max-width:900px){.hero,.two{grid-template-columns:1fr}.feature-grid,.stats,.three{grid-template-columns:repeat(2,1fr)}.status{display:none}.map{height:390px}}@media(max-width:560px){.nav{gap:8px}.links{font-size:12px}.feature-grid,.stats,.three{grid-template-columns:1fr}.hero h1{font-size:56px}.map{height:330px}}
+</style>
+</head>
+<body>
+<div class="app">
+<nav class="nav">
+  <div class="brand">SMARTROAD <span>AI</span></div>
+  <div class="links">
+    <button onclick="showPage('home')" class="active">Home</button>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+    <button onclick="showPage('map')">Map</button>
+    <button onclick="showPage('emergency')">Emergency</button>
+    <button onclick="showPage('municipality')">Municipality</button>
+    <button onclick="showPage('admin')">Admin</button>
+  </div>
+  <div class="status">● AI NETWORK ONLINE</div>
+</nav>
+
+<main>
+<section id="home" class="page active">
+<div class="hero">
+  <div>
+    <div class="eyebrow">INTELLIGENT SMART CITY MOBILITY</div>
+    <h1>SMARTROAD <em>AI</em></h1>
+    <p class="lead">Intelligent Road Health, Traffic & Emergency Response Network for India. One platform for safer roads, smarter mobility and faster emergency access.</p>
+    <div class="feature-grid grid">
+      <div class="glass feature"><div class="icon">🕳️</div><strong>Road Health AI</strong><small>Detect potholes and score road quality.</small></div>
+      <div class="glass feature"><div class="icon">🌧️</div><strong>Flood Intelligence</strong><small>Predict waterlogging and unsafe zones.</small></div>
+      <div class="glass feature"><div class="icon">🚑</div><strong>Green Corridor</strong><small>Emergency route decision support.</small></div>
+      <div class="glass feature"><div class="icon">🚦</div><strong>Smart Routing</strong><small>Compare fastest, safest and emergency routes.</small></div>
+      <div class="glass feature"><div class="icon">🎪</div><strong>Event Traffic AI</strong><small>Predict congestion before events.</small></div>
+      <div class="glass feature"><div class="icon">🏛️</div><strong>Municipal Analytics</strong><small>Turn reports into governance decisions.</small></div>
+    </div>
+  </div>
+  <div class="glass login">
+    <h2>Platform Access</h2>
+    <p style="color:#91a8b8">Demo authentication for the interactive HTML prototype.</p>
+    <input id="email" class="input" value="citizen@smartroad.ai" placeholder="Email">
+    <input id="password" class="input" value="Citizen@123" type="password" placeholder="Password">
+    <button class="btn primary" style="width:100%" onclick="login()">Enter SMARTROAD AI</button>
+    <p id="loginMsg" style="color:#ff8c98"></p>
+    <div class="item" style="margin-top:15px;font-size:12px">
+      <b>Demo accounts</b><br>Citizen: citizen@smartroad.ai / Citizen@123<br>Emergency: emergency@smartroad.ai / Emergency@123<br>Municipality: municipality@smartroad.ai / Municipal@123<br>Admin: admin@smartroad.ai / Admin@123
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="dashboard" class="page">
+<h1>Citizen Mobility Dashboard</h1><p style="color:var(--muted)">Real-time road intelligence and reporting.</p>
+<div class="grid stats">
+  <div class="glass card stat"><div class="label">Road Health</div><div class="value" id="roadScore">78</div></div>
+  <div class="glass card stat"><div class="label">Road Reports</div><div class="value" id="reportCount">24</div></div>
+  <div class="glass card stat"><div class="label">Pothole Clusters</div><div class="value">8</div></div>
+  <div class="glass card stat"><div class="label">Flood Risk</div><div class="value">0.31</div></div>
+  <div class="glass card stat"><div class="label">Network Status</div><div class="value" style="font-size:21px;color:var(--green)">HEALTHY</div></div>
+</div>
+<div class="grid two">
+<div class="glass card"><h2>Road Intelligence Map</h2><div class="map" id="dashMap"><div class="roads"></div><div class="marker pothole" style="left:28%;top:35%"></div><div class="marker flood" style="left:65%;top:58%"></div><div class="marker event" style="left:78%;top:26%"></div><div class="legend"><span><i class="dot" style="background:#ffbf3f"></i>Pothole</span><span><i class="dot" style="background:#247cff"></i>Flood</span><span><i class="dot" style="background:#a855f7"></i>Event</span></div></div></div>
+<div class="glass card"><h2>Report Road Issue</h2><select id="reportType" class="input"><option value="Pothole">Pothole</option><option value="Road Damage">Road Damage</option><option value="Waterlogging">Waterlogging</option></select><label>Severity</label><input id="severity" class="input" type="range" min="0" max="100" value="75" oninput="sevVal.textContent=this.value"><div id="sevVal" style="text-align:right">75</div><input id="reportLat" class="input" value="12.9716" placeholder="Latitude"><input id="reportLng" class="input" value="77.5946" placeholder="Longitude"><button class="btn primary" style="width:100%" onclick="reportIssue()">Submit AI Road Report</button><p id="reportMsg"></p><hr style="border-color:#1c4058"><h3>Recent Reports</h3><div class="list" id="recentReports"></div></div>
+</div>
+</section>
+
+<section id="map" class="page">
+<h1>Smart Route Engine</h1><p style="color:var(--muted)">Routes optimized for time, safety, road health and risk.</p>
+<div class="glass card">
+<div class="grid three"><div><label>Origin</label><input id="origin" class="input" value="Bengaluru City Center"></div><div><label>Destination</label><input id="destination" class="input" value="Hospital Emergency Wing"></div><div><label>Route Profile</label><select id="routeMode" class="input"><option>Compare All</option><option>Fastest</option><option>Safest</option><option>Emergency</option></select></div></div>
+<div class="control"><button class="btn primary" onclick="calculateRoutes()">Calculate Smart Routes</button><button class="btn secondary" onclick="toggleLayer('potholes')">Potholes</button><button class="btn secondary" onclick="toggleLayer('flood')">Flood Risk</button><button class="btn secondary" onclick="toggleLayer('traffic')">Traffic</button></div>
+<div class="map"><div class="roads"></div><div class="route fast"></div><div class="route safe"></div><div class="route"></div><div class="marker pothole" style="left:36%;top:49%"></div><div class="marker flood" style="left:59%;top:54%"></div><div class="marker event" style="left:72%;top:35%"></div></div>
+</div>
+<div class="grid three" style="margin-top:18px" id="routeCards"></div>
+</section>
+
+<section id="emergency" class="page">
+<div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap"><div><h1 style="color:#ff6572">Emergency Control Center</h1><p style="color:var(--muted)">AI-assisted emergency mobility corridor.</p></div><button class="btn danger" onclick="activateEmergency()">🚨 ACTIVATE EMERGENCY MODE</button></div>
+<div class="grid two">
+<div class="glass card"><div class="map"><div class="roads"></div><div class="route"></div><div class="marker emergency" style="left:18%;top:63%"></div><div class="marker pothole" style="left:44%;top:52%"></div><div class="marker flood" style="left:66%;top:50%"></div></div></div>
+<div class="glass card"><h2 id="emStatus">READY</h2><div class="item"><small>Vehicle</small><div id="vehicle">Ambulance</div></div><div class="item"><small>Estimated Arrival</small><div style="font-size:32px;color:var(--cyan)" id="eta">-- min</div></div><div class="item"><small>Corridor Risk Score</small><div class="risk"><i id="riskBar" style="width:0%"></i></div><div id="riskText">Awaiting activation</div></div><h3>Signal Recommendations</h3><div class="list"><div class="item">1. Request priority at next intersection</div><div class="item">2. Extend green phase by 20 seconds</div><div class="item">3. Coordinate next corridor signals</div></div><p style="font-size:12px;color:var(--amber)">Decision support only. Physical traffic signal control requires authorized municipal integration and human approval.</p></div>
+</div>
+</section>
+
+<section id="municipality" class="page">
+<h1>Municipal Governance Dashboard</h1>
+<div class="grid stats" style="grid-template-columns:repeat(4,1fr)">
+<div class="glass card stat"><div class="label">Pothole Clusters</div><div class="value">8</div></div><div class="glass card stat"><div class="label">Flood Hotspots</div><div class="value">5</div></div><div class="glass card stat"><div class="label">Traffic Hotspots</div><div class="value">12</div></div><div class="glass card stat"><div class="label">Emergency Responses</div><div class="value" id="emergencyCount">31</div></div>
+</div>
+<div class="grid two"><div class="glass card"><h2>Road Damage Trend</h2><div class="chart"><div class="bar" style="height:42%"><b>Mon</b></div><div class="bar" style="height:65%"><b>Tue</b></div><div class="bar" style="height:48%"><b>Wed</b></div><div class="bar" style="height:82%"><b>Thu</b></div><div class="bar" style="height:75%"><b>Fri</b></div><div class="bar" style="height:58%"><b>Sat</b></div><div class="bar" style="height:35%"><b>Sun</b></div></div></div>
+<div class="glass card"><h2>Priority Actions</h2><div class="list"><div class="item"><span class="pill">HIGH</span><br><b>Repair Cluster A-12</b><br><small>7 severe potholes detected</small></div><div class="item"><span class="pill">FLOOD</span><br><b>Drainage inspection</b><br><small>High rainfall risk zone</small></div><div class="item"><span class="pill">TRAFFIC</span><br><b>Event corridor monitoring</b><br><small>Expected congestion at 18:00</small></div></div></div></div>
+<div class="glass card" style="margin-top:18px"><h2>Event Traffic Intelligence</h2><div class="grid three"><input id="eventName" class="input" placeholder="Event name" value="City Festival"><input id="attendance" class="input" type="number" value="15000"><select id="eventType" class="input"><option>Festival</option><option>Political Gathering</option><option>Cricket Match</option><option>Concert</option><option>Local Event</option></select></div><button class="btn primary" onclick="predictEvent()">Predict Congestion</button><p id="eventResult"></p></div>
+</section>
+
+<section id="admin" class="page">
+<h1>System Administration</h1><div class="grid two"><div class="glass card"><h2>Platform Overview</h2><table class="table"><tr><th>Metric</th><th>Status</th></tr><tr><td>AI Model Service</td><td style="color:var(--green)">ONLINE</td></tr><tr><td>PostgreSQL</td><td style="color:var(--green)">CONNECTED</td></tr><tr><td>Route Engine</td><td style="color:var(--green)">READY</td></tr><tr><td>Weather Intelligence</td><td style="color:var(--green)">READY</td></tr><tr><td>Emergency Sessions</td><td id="adminSessions">0</td></tr></table></div><div class="glass card"><h2>Security Controls</h2><div class="list"><div class="item">JWT authentication enabled</div><div class="item">Role-based access model enabled</div><div class="item">Emergency activation audit required</div><div class="item">Signal control requires external authorization</div></div></div></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script>
+const state={reports:[{type:"Pothole",severity:0.82},{type:"Road Damage",severity:0.54},{type:"Waterlogging",severity:0.69}],emergencies:0};
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.links button').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');[...document.querySelectorAll('.links button')].find(x=>x.getAttribute('onclick')===`showPage('${id}')`)?.classList.add('active');window.scrollTo(0,0);renderReports()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+function login(){const e=email.value,p=password.value;if(e.includes('@')&&p.length>=8){toast('Authenticated successfully');showPage('dashboard')}else loginMsg.textContent='Enter a valid email and password.'}
+function reportIssue(){const sev=+severity.value/100;state.reports.unshift({type:reportType.value,severity:sev,lat:reportLat.value,lng:reportLng.value});reportCount.textContent=state.reports.length;roadScore.textContent=Math.max(0,Math.round(100-state.reports.reduce((a,x)=>a+x.severity*8,0)));reportMsg.innerHTML='<span style="color:#34d399">✓ Report stored. AI estimated road health impact and severity.</span>';toast('Road issue submitted');renderReports()}
+function renderReports(){const box=document.getElementById('recentReports');if(!box)return;box.innerHTML=state.reports.slice(0,4).map((r,i)=>`<div class="item"><b>${r.type}</b><br><small>Severity: ${Math.round(r.severity*100)}% · AI confidence: ${92-i*3}%</small></div>`).join('')}
+function calculateRoutes(){const routes=[['⚡ Fastest Route','18 min','0.48','Lowest travel time; moderate congestion'],['🛡️ Safest Route','23 min','0.21','Avoids poor road and high-risk zones'],['🚨 Emergency Route','15 min','0.17','Priority corridor with signal recommendations']];routeCards.innerHTML=routes.map(r=>`<div class="glass card"><h3>${r[0]}</h3><div style="font-size:28px;color:#28d7ff">${r[1]}</div><p>Risk score: ${r[2]}</p><small>${r[3]}</small></div>`).join('');toast('AI route comparison completed')}
+function toggleLayer(x){toast(`${x} layer toggled`)}
+function activateEmergency(){state.emergencies++;emStatus.textContent='ACTIVE · GREEN CORRIDOR GENERATED';eta.textContent=(14+Math.random()*4).toFixed(1)+' min';const r=Math.round(12+Math.random()*15);riskBar.style.width=r+'%';riskText.textContent='Low-to-moderate corridor risk: '+r+'%';emergencyCount.textContent=31+state.emergencies;adminSessions.textContent=state.emergencies;toast('Emergency corridor activated')}
+function predictEvent(){const n=+attendance.value||1000;const score=Math.min(99,Math.round(25+Math.log10(n)*18+Math.random()*15));const level=score>70?'HIGH':score>45?'MODERATE':'LOW';eventResult.innerHTML=`<span class="pill">${level}</span> <b>${eventName.value||'Event'}</b>: predicted congestion <b>${score}%</b>, peak hour 18:00, affected zone ${(300+score*22).toFixed(0)}m.`;toast('Event traffic prediction generated')}
+renderReports();calculateRoutes();
+</script>
+</body>
+</html>
